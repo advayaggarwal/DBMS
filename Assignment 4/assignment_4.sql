@@ -86,14 +86,16 @@ VALUES
 -- DROP TABLE Room;
 
 SELECT * FROM Patient;
--- Drop Table Doctor;
+
 SELECT * FROM Doctor;
+
+
 INSERT INTO Doctor
 VALUES
 (103, 'Pavan', 'Sharma', 7788400050, 'ENT', 542135,'Delhi'),
 (104, 'Rajendra' ,'Verma', 60226249494, 'Medicine', 544135, 'Bangalore');
 
-
+-- drop table Patient;
 INSERT INTO Patient
 VALUES
 (3, 'Rajendra','Raj', '1958-05-27', 6045218763, 'Hubli', 'qwertyuiop', 103),
@@ -103,15 +105,16 @@ VALUES
 (7, 'Advay','Aggarwal', '2018-05-27', 6045218763, 'Ooty', 'qwertyuiop', 103),
 (8, 'Mithil','Anchan', '1999-11-01', 7740562398, 'Mumbai', 'asdfghjkl', 104),
 (9, 'Akash','Kumar', '1989-05-27', 6045218763, 'Manali', 'qwertyuiop', 103),
-(10, 'Kshitiz','Michael', '1940-11-01', 7740562398, 'Srinagar', 'asdfghjkl', 104);
+(10, 'Kshitiz','Michael', '1940-11-01', 7740562398, 'Srinagar', 'asdfghjkl', 103);
 
 SELECT * FROM Patient ORDER BY P_dob;
 
-
 SELECT Doc_id as Doctor_Id, count(P_id) as NumberOfPatients FROM Patient group by Doc_id;
 
-SELECT Doc_id From Doctor where
-Doc_id IN (SELECT P.Doc_id, max(P.NumberOfPatients) from (select Doc_id , count(P_id) as NumberOfPatients from Patient group by Doc_id) P);
+-- SELECT * From Doctor where
+-- Doc_id = (SELECT P.Doc_id, max(P.NumberOfPatients) from (select Doc_id , count(P_id) as NumberOfPatients from Patient group by Doc_id) P);
 
+SELECT avg(Doc_salary), Doc_specialization FROM Doctor;
+-- GROUP BY Doc_specialization;
 
 SELECT * from Patient where P_first_name like 'a%';
