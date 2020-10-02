@@ -113,8 +113,8 @@ SELECT Doc_id as Doctor_Id, count(P_id) as NumberOfPatients FROM Patient group b
 
 -- SELECT * From Doctor where
 -- Doc_id = (SELECT P.Doc_id, max(P.NumberOfPatients) from (select Doc_id , count(P_id) as NumberOfPatients from Patient group by Doc_id) P);
-
-SELECT avg(Doc_salary), Doc_specialization FROM Doctor;
--- GROUP BY Doc_specialization;
+use Hospital;
+SELECT avg(Doc_salary), Doc_specialization FROM Doctor
+GROUP BY Doc_specialization;
 
 SELECT * from Patient where P_first_name like 'a%';
