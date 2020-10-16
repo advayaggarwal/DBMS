@@ -45,6 +45,15 @@ CREATE TABLE Room (
     PRIMARY KEY (Room_id),
     CONSTRAINT fKPatientRoom FOREIGN KEY (P_id) REFERENCES Patient (P_id) ON DELETE RESTRICT ON UPDATE CASCADE
     );
+
+insert into Room
+values
+(200,null, "ICU", 1),
+(201,null,"Single Bed", 2),
+(202,null, "Isolation Room", 3),
+(203,null, "ICU", 4);
+
+select * from Room;
     
 DROP TABLE IF EXISTS Medicine;   
 CREATE TABLE Medicine (
@@ -55,6 +64,15 @@ CREATE TABLE Medicine (
     PRIMARY KEY (Medi_id),
     CONSTRAINT fKPatientMedi FOREIGN KEY (P_id) REFERENCES Patient (P_id) ON DELETE RESTRICT ON UPDATE CASCADE
     );
+    
+    insert into Medicine
+    values
+    (300,4,1000,1),
+    (301,2,100,1),
+    (302,1,200,2),
+    (303,3,500,5);
+    
+    select * from Medicine;
 
 DROP TABLE IF EXISTS Nurse;    
 CREATE TABLE Nurse (
@@ -76,6 +94,7 @@ SELECT * FROM Doctor;
 -- ALTER TABLE Doctor add Doc_name VARCHAR(40) as  (concat(Doc_first_name, ' ',Doc_last_name));
 
 
+
 INSERT INTO Patient
 VALUES
 (1, 'Rahul','Raj', '1978-05-27', 6045218763, 'Bihar', 'qwertyuiop', 102),
@@ -94,6 +113,11 @@ INSERT INTO Doctor
 VALUES
 (103, 'Pavan', 'Sharma', 7788400050, 'ENT', 542135,'Delhi'),
 (104, 'Rajendra' ,'Verma', 60226249494, 'Medicine', 544135, 'Bangalore');
+
+INSERT INTO Doctor
+VALUES
+(105,'John','Wick', 0123456789, 'Medicine', 1234, 'Kolkata'),
+(106,'Iron','Man',9876543210,'ENT',786,'IIIT Dharwad');
 
 -- drop table Patient;
 INSERT INTO Patient
@@ -118,3 +142,62 @@ SELECT avg(Doc_salary), Doc_specialization FROM Doctor
 GROUP BY Doc_specialization;
 
 SELECT * from Patient where P_first_name like 'a%';
+
+SELECT Doctor.Doc_first_name as Doctor_Name, Patient.p_first_name as Patient_Name
+FROM Doctor
+INNER JOIN Patient
+ON Doctor.Doc_id = Patient.Doc_id
+order by Doctor_Name;
+
+SELECT Medicine.medi_price as Medicine_Price, Medicine.medi_quantity as Medicine_Quantity, Patient.p_first_name as Patient_Name
+FROM Patient
+INNER JOIN Medicine
+ON Medicine.P_id = Patient.P_id
+order by Medicine_Price desc;
+
+SELECT Room.room_type, Patient.p_first_name as Patient_Name
+FROM Patient
+INNER JOIN Room
+ON Room.P_id = Patient.P_id;
+
+SELECT Doctor.Doc_first_name, Patient.p_first_name
+FROM Doctor
+Left JOIN Patient
+ON Doctor.Doc_id = Patient.Doc_id
+order by Patient.p_first_name;
+
+SELECT Room.room_type, Patient.p_first_name
+FROM Patient
+Left JOIN Room
+ON Room.P_id = Patient.P_id
+order by Patient.p_first_name;
+
+-- Selected those patients who haven't purchased any medicines using left join 
+SELECT Medicine.medi_price as Medicine_Price, Medicine.medi_quantity as Medicine_Quantity, Patient.p_first_name as Patient_Name
+FROM Patient
+LEFT JOIN Medicine
+ON Medicine.P_id = Patient.P_id
+where Medicine.P_id is null
+order by Medicine_Price desc;
+
+
+SELECT Doctor.Doc_first_name, Patient.p_first_name
+FROM Patient
+right JOIN Doctor
+ON Doctor.Doc_id = Patient.Doc_id;
+
+-- Selected those patients who have purchased medicines using right join 
+SELECT Medicine.medi_price as Medicine_Price, Medicine.medi_quantity as Medicine_Quantity, Patient.p_first_name as Patient_Name
+FROM Medicine
+RIGHT JOIN Patient
+ON Medicine.P_id = Patient.P_id
+where Medicine.P_id is not null
+order by Medicine_Price desc;
+
+SELECT Room.room_type, Patient.p_first_name
+FROM Room
+right JOIN Patient
+ON Room.P_id = Patient.P_id
+where Patient.P_first_name like 'r%'
+order by Patient.p_first_name;
+
