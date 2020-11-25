@@ -43,7 +43,7 @@ INSERT INTO T8_CUSTOMER VALUES
 (80119, 'Ashok', 'Kumar','1967-07-01' ,'M','Lucknow ',7842024575,'ashokkumar@gmail.com ', 7496458364,'Married', 819),
 (80120, 'Yuvraj', 'Singh','1985-07-23' ,'M','Mumbai',8854623569,'yuvrajsingh@gmail.com ', 4574562585,'Divorced', 820);
 
-select * from T8_CUSTOMER;
+-- select * from T8_CUSTOMER;
 
 
 -- table 2
@@ -80,7 +80,7 @@ INSERT INTO  T8_APPLICATION VALUES ('80201', '80601', 'PENDING', 'Uninsured And 
     ('80219', '80619', 'ACCEPTED', 'Comprehensive Coverage', '80119'),
     ('80220', '80620', 'REJECTED', 'Personal Injury Protection', '80120');
 	
-select * from T8_APPLICATION;
+-- select * from T8_APPLICATION;
 
 
 
@@ -126,7 +126,7 @@ INSERT INTO T8_QUOTE VALUES
 
 
 
-drop table T8_INSURANCE_POLICY;
+-- drop table T8_INSURANCE_POLICY;
 -- table 4
 CREATE TABLE IF NOT EXISTS T8_INSURANCE_POLICY 
 (
@@ -167,7 +167,7 @@ INSERT INTO T8_INSURANCE_POLICY VALUES ('80401' ,'20001','2020-02-08', '2022-02-
 
 
 
-drop table T8_PREMIUM_PAYMENT;
+-- drop table T8_PREMIUM_PAYMENT;
 -- table 5
 CREATE TABLE IF NOT EXISTS T8_PREMIUM_PAYMENT 
 (
@@ -201,15 +201,15 @@ INSERT INTO T8_PREMIUM_PAYMENT VALUES(80501 , '20001' , 50000 ,'2018-12-23' , 82
 (80517 , '20017' , 50000 ,'2019-06-12' ,  82101 , 80117 ),
 (80518 , '20018' , 62000 ,'2018-06-29' , 82118 , 80118 ),
 (80519 , '20019' , 84000 , '2019-02-19' , 82119 , 80119 );
--- (80520 , '20020' , 40000 ,'2018-11-20' ,82120 , 80120 );
-
-select * from T8_PREMIUM_PAYMENT;
 
 
+-- select * from T8_PREMIUM_PAYMENT;
 
 
 
-drop table T8_VEHICLE;
+
+
+-- drop table T8_VEHICLE;
 -- table 6
 CREATE TABLE IF NOT EXISTS T8_VEHICLE 
 (
@@ -253,15 +253,16 @@ CREATE UNIQUE INDEX XPKVEHICLE_6 ON T8_VEHICLE(Vehicle_Id ASC,Cust_Id ASC);
     ('80618', '20018','81418', 'HP 14 HI 7777', 900000, '4 wheeler', 15.4, 4, 'Skoda', 51718, 52718, 191877, 'FZS-430100', '80118'),
     ('80619', '20019','81419', 'DL 34 JK 8888', 650000, '4 wheeler', 12.4, 4, 'Maruti', 51718, 52719, 998741, 'FZS-5433100', '80119'),
     ('80620', '20020','81420', 'MH 12 LM 9999', 1200000, '4 wheeler', 19.4, 6, 'BMW', 51720, 52720, 485631, 'FZS-940100', '80120');
-insert into T8_VEHICLE values ('80621', '20020','81420', 'MH 35 KP 0020', 25000, '4 wheeler', 25.4, 8, 'AUDI', 51711, 52711, 881101, 'FZS-343100', '80120');
-select * from T8_VEHICLE;
+
+INSERT INTO T8_VEHICLE VALUES ('80621', '20020','81420', 'MH 35 KP 0020', 25000, '4 wheeler', 25.4, 8, 'AUDI', 51711, 52711, 881101, 'FZS-343100', '80120');
+-- select * from T8_VEHICLE;
 
 
 
 
 
 
-drop table T8_CLAIM;
+-- drop table T8_CLAIM;
 -- table 7
 CREATE TABLE IF NOT EXISTS T8_CLAIM
 (
@@ -305,7 +306,7 @@ INSERT INTO T8_CLAIM VALUES
 
 
 
-drop table T8_CLAIM_SETTLEMENT;
+-- drop table T8_CLAIM_SETTLEMENT;
 -- table 8
 CREATE TABLE IF NOT EXISTS T8_CLAIM_SETTLEMENT 
 (
@@ -335,7 +336,50 @@ INSERT INTO T8_CLAIM_SETTLEMENT VALUES
 
 
 
-drop table T8_STAFF;
+-- drop table T8_INSURANCE_COMPANY;
+-- table 15
+CREATE TABLE IF NOT EXISTS T8_INSURANCE_COMPANY
+(
+Company_Name	VARCHAR(100) NOT NULL ,
+Company_Address	VARCHAR(300) NULL ,
+Company_Contact_Number VARCHAR(20) NULL ,
+Company_Fax	VARCHAR(20) NULL ,
+Company_Email	VARCHAR(50) NULL ,
+Company_Website	VARCHAR(100) NULL ,
+Company_Location	VARCHAR(100) NULL ,
+Company_Department_Name VARCHAR(50) NULL , 
+Company_Office_Name VARCHAR(50) NULL ,
+CONSTRAINT XPKINSURANCE_COMPANY_15 PRIMARY KEY (Company_Name)
+);
+CREATE UNIQUE INDEX XPKINSURANCE_COMPANY_15 ON T8_INSURANCE_COMPANY (Company_Name ASC);
+
+INSERT INTO T8_INSURANCE_COMPANY VALUES
+('Aegon Vehicle Insurance Company Limited','206 & 207, 2nd Floor, Aditya Trade Center, 7-1-618, Ameerpet, Hyderabad, Telangana 500038',885432564,7856542563,'AegonVehicle@help.com','AegonVehicle.com','Hyderabad','AegonVehicleoffice','AegonVehicleoffice'),
+('Aviva Vehicle Insurance Company Limited', 'Towers, Sector Road, Opposite Golf Course, DLF Phase V, Sector 43, Gurgaon – 122003.',8584063500,5684001620,'aiaamaxVehicle@help.com','aviamaxVehicle.com','Gurgaon','aviamaxVehicleoffice','aviamaxVehicleoffice'),
+('Bajaj Allianz Vehicle Insurance Company Limited', 'Hno 6-130, 1st Floor Above ING Vysya Bank Market Road Adilabad Mancherial Andhra Pradesh Telangana',9769915832,5033256789,'customercare@bajajallianz.co.in','https://www.bajajallianzVehicle.com','Pune',' Bajaj Allianz Vehicle Insurance Co',' Bajaj Allianz Vehicle Insurance Co'),
+('Bharti AXA Vehicle Insurance Company Limited','130, Unit No. 1904, 19th Floor, Parinee Crescenzo, G Block, Bandra',9986555754,9965865932,'BhartiVehicle@help.com', 'BhartiVehicle.com', 'Mumbai', 'BhartiVehicleoffice', 'BhartiVehicleoffice'),
+('Birla Sun Vehicle Insurance Company Limited', 'One World Center, Tower 1, 16th Floor, Jupiter Mill Compound, 841, Senapati Bapat Marg, Elphinstone Road, Mumbai',9769915765,5033256700,'care.Vehicleinsurance@adityabirlacapital.com', 'https://Vehicleinsurance.adityabirlacapital.com', 'Mumbai ', 'Birla Sun Vehicle Insurance ', 'Birla Sun Vehicle Insurance '),
+('Canara HSBC Oriental Bank of Commerce LIC Limited','206 & 207, 2nd Floor, Aditya Trade Center, 7-1-618, Ameerpet, Hyderabad, Telangana 500038',8546592548,8756452563,'CanaraVehicle@help.com','CanaraVehicle.com','Hyderabad','CanaraVehicleoffice','CanaraVehicleoffice'),
+('DLF Pramerica Vehicle Insurance Company Limited', 'Office No.501- 520, on 5th floor, Bezzola Complex C.H.S. Ltd., S. No. 237, C.S. No. 353, 352/2, 353/3, 353/4, Sion Trombay Road,',9854256527,8545652315,'DLFVehicle@help.com','DLFVehicle.com','Sion','DLFVehicleoffice','DLFVehicleoffice'),
+('Exide Vehicle Insurance Company Limited','Registered Office: 3rd Floor, JP Techno Park, No. 3/1, Millers Road, Bangalore- 560 001, India.',9769915414,5033256715,'ExideVehicleInsurance@gmail.com','https://www.exideVehicle.in/','Mumbai','exidVehicleoffice','exideVehicle'),
+('Future Generali India Vehicle Insurance Company Limited','1st Floor, 7-1-21A, Raj Bhavan Rd, opp. Vehiclestyle Building, beside Vinn Hospital APDL Estates, Begumpet, Hyderabad, Telangana 500016',8874010012,8875649582,'FutureVehicle@help.com','FutureVehicle.com','Hyderabad','FutureVehicleoffice','FutureVehicleoffice'),
+('HDFC Vehicle Insurance Company Limited','Lodha Excelus, 13th Floor, Apollo Mills Compound, N.M. Joshi Marg, Mahalaxmi, Mumbai',9769915777,NULL,'buyonline@hdfcVehicle.in','https://www.hdfcVehicle.com/','Mumbai','hdfcVehicle','hdfcVehicle'),
+('ICICI Prudential Vehicle Insurance Company Limited','1089 Appasaheb Marathe Marg, Prabhadevi, Mumbai ',9769915766,5033256751,'icicipruVehicle@gmail.com','https://www.icicipruVehicle.com/','Mumbai',' ICICI PruVehicle',' ICICI PruVehicle'),
+('IDBI Federal Vehicle Insurance Company Limited','3-5-922 Sri Sai Balaji Residency, Near Narayanaguda Flyover, Hyderabad, Telangana 500029',5685478562,8986570120,'IDBIFederalVehicle@help.com','IDBIFederalVehicle.com','Hyderabad','IDBI FederalVehicleoffice','IDBIFederalVehicleoffice'),
+('Kotak Vehicle Insurance Company Limited','Kotak Mahindra Vehicle Insurance Company Limited, Regd. Office: 2nd Floor, Plot # C- 12, G- Block, BKC, Bandra (E), Mumbai - 400 051',4659878165,4659875642,'KotakVehicleInsurance@help.com','KotakVehicleInsurance.com','Mumbai','kotakVehicleoffice','kotakVehicleoffice'),
+('Max Vehicle Insurance Company Limited','Max Vehicle Insurance Co. Ltd., 3rd, 11th and 12th Floor, DLF Square Building, Jacaranda Marg, DLF City Phase II, Gurugram (Haryana) - 122002',9769915577,5033256720,'maxVehicle@help.com','maxVehicle.com','Gurugram','maxVehicleoffice','maxVehicleoffice'),
+('PNB MetVehicle India Insurance Company Limited','PNB MetLife Insurance Company Limited 2nd Floor, Peninsula Tower, A Wing Peninsula Corp. Park, G. K. Marg Lower Parel, Mumbai - 400 013',4698712654,5033256714,'pnbmedVehicle@help.com','pnbmedVehicle.com', 'Mumbai','medVehicleoffice','pnbVehicleoffice'),
+('Reliance Vehicle Insurance Company Limited','Reliance Centre, 5th floor, Off Western Express Highway, Santacruz East, Mumbai, Mumbai-City district, Maharashtra-400055',18068168110020,55540542020,'relianceVehicle@help.com','relianceVehicle.com', 'Mumbai', 'relianceVehicleoffice', 'relianceVehicleoffice'),
+('SBI Vehicle Insurance Company Limited','SBI Vehicle Corporate Solutions. 7th Floor, "Natraj", MV Road & Western Express Highway Junction, Andheri (East) , Mumbai - 400 069',1659756489,6598325146,'sbiVehicle@help.com','sbiVehicle.com','Mumbai','sbiVehicleoffice','sbiVehicleoffice'),
+('Shriram Vehicle Insurance Company Limited','Bank Training Centre, Financial District, Gachibowli, Hyderabad, TG, India – 500032.',7785468265,8875965240,'ShriramVehicle@help.com', 'ShriramVehicle.com','Hyderabad', 'ShriramVehicleoffice','ShriramVehicleoffice'),
+('Tata AIA Vehicle Insurance Company Limited','Floor, Tower A, Peninsula Business Park, Senapati Bapat Marg, Lower Parel, Mumbai 400013',2325364645,8379847393,'tataaia@help.com','tataVehicle.com','Mumbai','tataVehicleoffice','tataVehicleoffice'),
+('Vehicle Insurance Corporation of India','2nd Floor Jagtial 505327',9769915552,5033256779,'lic@gmail.com','www.lic.com','jagtial','licjagtial','licjag');
+
+-- select * from T8_INSURANCE_COMPANY;
+
+
+
+-- drop table T8_STAFF;
 -- table 9
 CREATE TABLE IF NOT EXISTS T8_STAFF
 (
@@ -382,7 +426,7 @@ INSERT INTO T8_STAFF VALUES
 
 
 
-drop table T8_DEPARTMENT;
+-- drop table T8_DEPARTMENT;
 -- table 10
 CREATE TABLE IF NOT EXISTS T8_DEPARTMENT 
 (
@@ -417,14 +461,14 @@ INSERT INTO T8_DEPARTMENT VALUES
 ('Underwriting Department', '81019', 'pooja mishra', 'Canara HSBC Oriental Bank of Commerce LIC Limited'),
 ('Underwriting Department', '81020', 'binod', 'Shriram Vehicle Insurance Company Limited');
 
-select * from T8_DEPARTMENT;
+-- select * from T8_DEPARTMENT;
 
 
 
 
 
 
-drop table T8_OFFICE;
+-- drop table T8_OFFICE;
 -- table 11
 CREATE TABLE IF NOT EXISTS T8_OFFICE
 (
@@ -468,7 +512,7 @@ INSERT INTO T8_OFFICE VALUES
 
 
 
-drop table T8_MEMBERSHIP;
+-- drop table T8_MEMBERSHIP;
 -- table 12
 CREATE TABLE IF NOT EXISTS T8_MEMBERSHIP
 (
@@ -505,7 +549,7 @@ INSERT INTO T8_MEMBERSHIP VALUES('81201', '812IGT677643', '9422630900', '80101')
 
 
 
-drop table T8_VEHICLE_SERVICE;
+-- drop table T8_VEHICLE_SERVICE;
 -- table 13
 CREATE TABLE IF NOT EXISTS T8_VEHICLE_SERVICE 
 (
@@ -542,14 +586,14 @@ INSERT INTO T8_VEHICLE_SERVICE VALUES
 ('Claims Department','DD','chennai','9945610049','kanchan devi', 'half-service','81010', 'IDBI Federal Vehicle Insurance Company Limited'),
 ('Underwriting Department','EE','lucknow','9945699045', 'dheeraj','full-service','81019', 'Canara HSBC Oriental Bank of Commerce LIC LIMITED');
 
-select * from T8_VEHICLE_SERVICE;
+-- select * from T8_VEHICLE_SERVICE;
 
 
 
 
 
 
-drop table T8_NOK;
+-- drop table T8_NOK;
 -- table 14
 CREATE TABLE IF NOT EXISTS T8_NOK
 (
@@ -594,53 +638,7 @@ INSERT INTO T8_NOK VALUES
 
 
 
-
-drop table T8_INSURANCE_COMPANY;
--- table 15
-CREATE TABLE IF NOT EXISTS T8_INSURANCE_COMPANY
-(
-Company_Name	VARCHAR(100) NOT NULL ,
-Company_Address	VARCHAR(300) NULL ,
-Company_Contact_Number VARCHAR(20) NULL ,
-Company_Fax	VARCHAR(20) NULL ,
-Company_Email	VARCHAR(50) NULL ,
-Company_Website	VARCHAR(100) NULL ,
-Company_Location	VARCHAR(100) NULL ,
-Company_Department_Name VARCHAR(50) NULL , 
-Company_Office_Name VARCHAR(50) NULL ,
-CONSTRAINT XPKINSURANCE_COMPANY_15 PRIMARY KEY (Company_Name)
-);
-CREATE UNIQUE INDEX XPKINSURANCE_COMPANY_15 ON T8_INSURANCE_COMPANY (Company_Name ASC);
-
-INSERT INTO T8_INSURANCE_COMPANY VALUES
-('Aegon Vehicle Insurance Company Limited','206 & 207, 2nd Floor, Aditya Trade Center, 7-1-618, Ameerpet, Hyderabad, Telangana 500038',885432564,7856542563,'AegonVehicle@help.com','AegonVehicle.com','Hyderabad','AegonVehicleoffice','AegonVehicleoffice'),
-('Aviva Vehicle Insurance Company Limited', 'Towers, Sector Road, Opposite Golf Course, DLF Phase V, Sector 43, Gurgaon – 122003.',8584063500,5684001620,'aiaamaxVehicle@help.com','aviamaxVehicle.com','Gurgaon','aviamaxVehicleoffice','aviamaxVehicleoffice'),
-('Bajaj Allianz Vehicle Insurance Company Limited', 'Hno 6-130, 1st Floor Above ING Vysya Bank Market Road Adilabad Mancherial Andhra Pradesh Telangana',9769915832,5033256789,'customercare@bajajallianz.co.in','https://www.bajajallianzVehicle.com','Pune',' Bajaj Allianz Vehicle Insurance Co',' Bajaj Allianz Vehicle Insurance Co'),
-('Bharti AXA Vehicle Insurance Company Limited','130, Unit No. 1904, 19th Floor, Parinee Crescenzo, G Block, Bandra',9986555754,9965865932,'BhartiVehicle@help.com', 'BhartiVehicle.com', 'Mumbai', 'BhartiVehicleoffice', 'BhartiVehicleoffice'),
-('Birla Sun Vehicle Insurance Company Limited', 'One World Center, Tower 1, 16th Floor, Jupiter Mill Compound, 841, Senapati Bapat Marg, Elphinstone Road, Mumbai',9769915765,5033256700,'care.Vehicleinsurance@adityabirlacapital.com', 'https://Vehicleinsurance.adityabirlacapital.com', 'Mumbai ', 'Birla Sun Vehicle Insurance ', 'Birla Sun Vehicle Insurance '),
-('Canara HSBC Oriental Bank of Commerce LIC Limited','206 & 207, 2nd Floor, Aditya Trade Center, 7-1-618, Ameerpet, Hyderabad, Telangana 500038',8546592548,8756452563,'CanaraVehicle@help.com','CanaraVehicle.com','Hyderabad','CanaraVehicleoffice','CanaraVehicleoffice'),
-('DLF Pramerica Vehicle Insurance Company Limited', 'Office No.501- 520, on 5th floor, Bezzola Complex C.H.S. Ltd., S. No. 237, C.S. No. 353, 352/2, 353/3, 353/4, Sion Trombay Road,',9854256527,8545652315,'DLFVehicle@help.com','DLFVehicle.com','Sion','DLFVehicleoffice','DLFVehicleoffice'),
-('Exide Vehicle Insurance Company Limited','Registered Office: 3rd Floor, JP Techno Park, No. 3/1, Millers Road, Bangalore- 560 001, India.',9769915414,5033256715,'ExideVehicleInsurance@gmail.com','https://www.exideVehicle.in/','Mumbai','exidVehicleoffice','exideVehicle'),
-('Future Generali India Vehicle Insurance Company Limited','1st Floor, 7-1-21A, Raj Bhavan Rd, opp. Vehiclestyle Building, beside Vinn Hospital APDL Estates, Begumpet, Hyderabad, Telangana 500016',8874010012,8875649582,'FutureVehicle@help.com','FutureVehicle.com','Hyderabad','FutureVehicleoffice','FutureVehicleoffice'),
-('HDFC Vehicle Insurance Company Limited','Lodha Excelus, 13th Floor, Apollo Mills Compound, N.M. Joshi Marg, Mahalaxmi, Mumbai',9769915777,NULL,'buyonline@hdfcVehicle.in','https://www.hdfcVehicle.com/','Mumbai','hdfcVehicle','hdfcVehicle'),
-('ICICI Prudential Vehicle Insurance Company Limited','1089 Appasaheb Marathe Marg, Prabhadevi, Mumbai ',9769915766,5033256751,'icicipruVehicle@gmail.com','https://www.icicipruVehicle.com/','Mumbai',' ICICI PruVehicle',' ICICI PruVehicle'),
-('IDBI Federal Vehicle Insurance Company Limited','3-5-922 Sri Sai Balaji Residency, Near Narayanaguda Flyover, Hyderabad, Telangana 500029',5685478562,8986570120,'IDBIFederalVehicle@help.com','IDBIFederalVehicle.com','Hyderabad','IDBI FederalVehicleoffice','IDBIFederalVehicleoffice'),
-('Kotak Vehicle Insurance Company Limited','Kotak Mahindra Vehicle Insurance Company Limited, Regd. Office: 2nd Floor, Plot # C- 12, G- Block, BKC, Bandra (E), Mumbai - 400 051',4659878165,4659875642,'KotakVehicleInsurance@help.com','KotakVehicleInsurance.com','Mumbai','kotakVehicleoffice','kotakVehicleoffice'),
-('Max Vehicle Insurance Company Limited','Max Vehicle Insurance Co. Ltd., 3rd, 11th and 12th Floor, DLF Square Building, Jacaranda Marg, DLF City Phase II, Gurugram (Haryana) - 122002',9769915577,5033256720,'maxVehicle@help.com','maxVehicle.com','Gurugram','maxVehicleoffice','maxVehicleoffice'),
-('PNB MetVehicle India Insurance Company Limited','PNB MetLife Insurance Company Limited 2nd Floor, Peninsula Tower, A Wing Peninsula Corp. Park, G. K. Marg Lower Parel, Mumbai - 400 013',4698712654,5033256714,'pnbmedVehicle@help.com','pnbmedVehicle.com', 'Mumbai','medVehicleoffice','pnbVehicleoffice'),
-('Reliance Vehicle Insurance Company Limited','Reliance Centre, 5th floor, Off Western Express Highway, Santacruz East, Mumbai, Mumbai-City district, Maharashtra-400055',18068168110020,55540542020,'relianceVehicle@help.com','relianceVehicle.com', 'Mumbai', 'relianceVehicleoffice', 'relianceVehicleoffice'),
-('SBI Vehicle Insurance Company Limited','SBI Vehicle Corporate Solutions. 7th Floor, "Natraj", MV Road & Western Express Highway Junction, Andheri (East) , Mumbai - 400 069',1659756489,6598325146,'sbiVehicle@help.com','sbiVehicle.com','Mumbai','sbiVehicleoffice','sbiVehicleoffice'),
-('Shriram Vehicle Insurance Company Limited','Bank Training Centre, Financial District, Gachibowli, Hyderabad, TG, India – 500032.',7785468265,8875965240,'ShriramVehicle@help.com', 'ShriramVehicle.com','Hyderabad', 'ShriramVehicleoffice','ShriramVehicleoffice'),
-('Tata AIA Vehicle Insurance Company Limited','Floor, Tower A, Peninsula Business Park, Senapati Bapat Marg, Lower Parel, Mumbai 400013',2325364645,8379847393,'tataaia@help.com','tataVehicle.com','Mumbai','tataVehicleoffice','tataVehicleoffice'),
-('Vehicle Insurance Corporation of India','2nd Floor Jagtial 505327',9769915552,5033256779,'lic@gmail.com','www.lic.com','jagtial','licjagtial','licjag');
-select * from T8_INSURANCE_COMPANY;
-
-
-
-
-
-
-drop table T8_POLICY_RENEWABLE;
+-- drop table T8_POLICY_RENEWABLE;
 -- table 16
 CREATE TABLE IF NOT EXISTS T8_POLICY_RENEWABLE
 (
@@ -673,7 +671,7 @@ INSERT INTO T8_POLICY_RENEWABLE VALUES
 
 
 
-drop table T8_INCIDENT;
+-- drop table T8_INCIDENT;
 -- table 17
 CREATE TABLE IF NOT EXISTS T8_INCIDENT 
 (
@@ -707,7 +705,7 @@ INSERT INTO T8_INCIDENT VALUES
 ('81719', 'Lightning', '2020-11-22', 'Under The policy of Standard Fire and Special Perils Policy Coverage you can claim the Damage coverages'),
 ('81720', 'Windshield Damage', '2021-01-28', 'The windshield of your car may break or have a crack as a result of a collision or non-collision. A comprehensive car insurance policy covers all physical damages caused to your car\'s windshield due to collision and non-collision');
 
-select * from T8_INCIDENT;
+-- select * from T8_INCIDENT;
 
 
 
@@ -717,7 +715,7 @@ select * from T8_INCIDENT;
 
 
 
-drop table T8_INCIDENT_REPORT;
+-- drop table T8_INCIDENT_REPORT;
 -- table 18
 CREATE TABLE IF NOT EXISTS T8_INCIDENT_REPORT
 ( 
@@ -756,14 +754,14 @@ INSERT INTO T8_INCIDENT_REPORT  VALUES
 ('81819','Lightning','Subramaniam Sharma',35000,'due to heavy rain lightning caused damage to vehicle','81719','80119'),
 ('81820','Windshield damage','Ankur Singhania',16000,'due to accident wind shield has been broken','81720','80120');
 
-select * from T8_INCIDENT_REPORT;
+-- select * from T8_INCIDENT_REPORT;
 
 
 
 
 
 
-drop table T8_COVERAGE;
+-- drop table T8_COVERAGE;
 -- table 19
 CREATE TABLE IF NOT EXISTS T8_COVERAGE
 (
@@ -806,7 +804,7 @@ INSERT INTO T8_COVERAGE VALUES ('81901', '510000', 'Liability', 'HIGH', '82001',
 
 
 
-drop table T8_PRODUCT;
+-- drop table T8_PRODUCT;
 -- table 20
 CREATE TABLE IF NOT EXISTS T8_PRODUCT
 (
@@ -841,7 +839,7 @@ INSERT INTO T8_PRODUCT VALUES
 
 
 
-drop table T8_RECEIPT;
+-- drop table T8_RECEIPT;
 -- table 21
 CREATE TABLE IF NOT EXISTS T8_RECEIPT 
 (
@@ -875,13 +873,12 @@ INSERT INTO T8_RECEIPT VALUES
  (82117, '2018-04-28' , 50000, 80517 , 80117 ),
  (82118, '2020-06-11' , 62000, 80518 , 80118 ),
  (82119, '2017-03-03' , 84000, 80519 , 80119 );
- -- ( 82120, '2016-05-04' , 40000, 80520 , 80120 ); 
 
 
 
 
 
-drop table T8_INSURANCE_POLICY_COVERAGE;
+-- drop table T8_INSURANCE_POLICY_COVERAGE;
 -- table 22
 CREATE TABLE IF NOT EXISTS T8_INSURANCE_POLICY_COVERAGE
 (
@@ -955,10 +952,7 @@ INSERT INTO T8_INSURANCE_POLICY_COVERAGE VALUES
     having count(distinct (Product_Number)) > count(distinct (Department_Name))));
     
     
-    -- select T8_DEPARTMENT.Company_Name, count(*)
---     from T8_PRODUCT inner join T8_DEPARTMENT 
---     on T8_DEPARTMENT.Company_Name = T8_PRODUCT.Company_Name 
---     group by T8_DEPARTMENT.Company_Name;
+    
     
     
     -- query 4
