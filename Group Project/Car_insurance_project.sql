@@ -185,7 +185,7 @@ CREATE UNIQUE INDEX XPKPREMIUM_PAYMENT_5 ON T8_PREMIUM_PAYMENT (Premium_Payment_
 INSERT INTO T8_PREMIUM_PAYMENT VALUES(80501 , '20001' , 50000 ,'2018-12-23' , 82101, 80101 ),
 (80502 , '20002' , 42000 ,'2019-11-20' ,  82102 ,80102),
 (80503 , '20003' , 42000 ,'2018-02-25' ,  82103 , 80103 ),
-(80504 , '20004' , 40000 , '2019-05-15' , 82104 , 80104 ),
+(80504 , '20004' , 2000000 , '2019-05-15' , 82104 , 80104 ),
 (80505 , '20005' , 42000 , '2018-04-13' ,  82105 , 80105 ),
 (80506 , '20006' , 70000 ,'2019-04-21' ,  82106 , 80106 ),
 (80507 , '20007' , 78000 , '2018-09-11' ,  82107 , 80107 ),
@@ -193,15 +193,15 @@ INSERT INTO T8_PREMIUM_PAYMENT VALUES(80501 , '20001' , 50000 ,'2018-12-23' , 82
 (80509 , '20009' , 36000 , '2018-08-12'  , 82109 , 80109 ),
 (80510 , '20010' , 68000 , '2019-01-23' , 82110 , 80110 ),
 (80511 , '20011' , 32000 , '2018-11-17' , 82111 , 80111 ),
-(80512 , '20012' , 34000 , '2019-12-14' ,  82112 , 80112 ),
+(80512 , '20012' , 3400000 , '2019-12-14' ,  82112 , 80112 ),
 (80513 , '20013' , 38000 , '2018-10-06' , 82113 , 80113 ),
 (80514 , '20014' , 40000 ,'2019-10-09' ,  82114 , 80114 ),
 (80515 , '20015' , 55000 ,'2018-05-02' , 82115 , 80115 ),
 (80516 , '20016' , 58000 , '2019-05-10' , 82116 , 80116 ),
 (80517 , '20017' , 50000 ,'2019-06-12' ,  82101 , 80117 ),
 (80518 , '20018' , 62000 ,'2018-06-29' , 82118 , 80118 ),
-(80519 , '20019' , 84000 , '2019-02-19' , 82119 , 80119 ),
-(80520 , '20020' , 40000 ,'2018-11-20' ,82120 , 80120 );
+(80519 , '20019' , 84000 , '2019-02-19' , 82119 , 80119 );
+-- (80520 , '20020' , 40000 ,'2018-11-20' ,82120 , 80120 );
 
 select * from T8_PREMIUM_PAYMENT;
 
@@ -253,7 +253,7 @@ CREATE UNIQUE INDEX XPKVEHICLE_6 ON T8_VEHICLE(Vehicle_Id ASC,Cust_Id ASC);
     ('80618', '20018','81418', 'HP 14 HI 7777', 900000, '4 wheeler', 15.4, 4, 'Skoda', 51718, 52718, 191877, 'FZS-430100', '80118'),
     ('80619', '20019','81419', 'DL 34 JK 8888', 650000, '4 wheeler', 12.4, 4, 'Maruti', 51718, 52719, 998741, 'FZS-5433100', '80119'),
     ('80620', '20020','81420', 'MH 12 LM 9999', 1200000, '4 wheeler', 19.4, 6, 'BMW', 51720, 52720, 485631, 'FZS-940100', '80120');
-
+insert into T8_VEHICLE values ('80621', '20020','81420', 'MH 35 KP 0020', 25000, '4 wheeler', 25.4, 8, 'AUDI', 51711, 52711, 881101, 'FZS-343100', '80120');
 select * from T8_VEHICLE;
 
 
@@ -389,7 +389,6 @@ CREATE TABLE IF NOT EXISTS T8_DEPARTMENT
 Department_Name	VARCHAR(50) NOT NULL , 
 Department_ID CHAR(18) NOT NULL , 
 Department_Staff CHAR(50) NULL , 
--- Department_Offices CHAR(30) NULL , 
 Company_Name VARCHAR(100) NOT NULL ,
 CONSTRAINT XPKDEPARTMENT PRIMARY KEY(Department_Name,Company_Name),
 CONSTRAINT R_56 FOREIGN KEY (Company_Name) REFERENCES T8_INSURANCE_COMPANY (Company_Name)
@@ -453,16 +452,16 @@ INSERT INTO T8_OFFICE VALUES
 ('OPQZ', 'Bhargava','764166535', 'Mumbai', '160000','80908', 'Actuarial and Statistical Department', 'Shriram Vehicle Insurance Company Limited'),
 ('QRSF', 'Aniruddha', '9876987652', 'Mumbai', '160000','80909', 'Reinsurance Department', 'Canara HSBC Oriental Bank of Commerce LIC Limited'), 
 ('STUN', 'Anchan', '6756273891', 'Delhi', '140000','80910', 'Underwriting Department', 'Canara HSBC Oriental Bank of Commerce LIC Limited'), 
-('AVWQ', 'Maurya', '770781155', 'Pune', '166000','80911', 'Legal Department','ICICI Prudential Vehicle Insurance Company Limited'),
+('AVWQ', 'Maurya', '770781155', 'Pune', '166000','80911', 'Legal Department','Kotak Vehicle Insurance Company Limited'),
 ('QXYL', 'Suresh', '9483356733', 'Lucknow', '145000','80912', 'Actuarial and Statistical Department', 'Shriram Vehicle Insurance Company Limited'), 
-('VZAZ', 'Ramesh', '9845067456', 'Chennai', '1230000','80913', 'Underwriting Department', 'Bajaj Allianz Vehicle Insurance Company Limited'),
+('VZAZ', 'Ramesh', '9845067456', 'Chennai', '1230000','80913', 'Claims Department', 'Birla Sun Vehicle Insurance Company Limited'),
 ('QCDB', 'Mithilesh', '9900904357', 'Bangalore', '173000','80914', 'Legal Department','ICICI Prudential Vehicle Insurance Company Limited'),
 ('DEFM', 'Jagdish', '9090887766', 'Bangalore', '175000','80915', 'Actuarial and Statistical Department', 'Shriram Vehicle Insurance Company Limited'), 
 ('FGHW', 'Nemade', '9876783678', 'Hyderbad', '134000','80916', 'Reinsurance Department', 'Canara HSBC Oriental Bank of Commerce LIC Limited'),
 ('HIJL', 'Pranjal', '8987698787', 'Channai', '123000','80917', 'Actuarial and Statistical Department', 'Shriram Vehicle Insurance Company Limited'), 
 ('JKLP', 'Anvita', '8484884484', 'Kerala', '156000','80918', 'Actuarial and Statistical Department', 'Shriram Vehicle Insurance Company Limited'), 
 ('LMNQ', 'Aniruddha', '9801111111', 'Delhi', '175000','80908','Underwriting Department', 'Bajaj Allianz Vehicle Insurance Company Limited'),
-('NOPG', 'Abhishek', '8780900222', 'Lucknow', '165000','80920', 'Legal Department','ICICI Prudential Vehicle Insurance Company Limited');
+('NOPG', 'Abhishek', '8780900222', 'Lucknow', '165000','80920', 'Legal Department','Kotak Vehicle Insurance Company Limited');
 
 
 
@@ -875,8 +874,8 @@ INSERT INTO T8_RECEIPT VALUES
  (82116, '2018-10-06' , 58000, 80516 , 80116 ),
  (82117, '2018-04-28' , 50000, 80517 , 80117 ),
  (82118, '2020-06-11' , 62000, 80518 , 80118 ),
- (82119, '2017-03-03' , 84000, 80519 , 80119 ),
- (82120, '2016-05-04' , 40000, 80520 , 80120 );
+ (82119, '2017-03-03' , 84000, 80519 , 80119 );
+ -- ( 82120, '2016-05-04' , 40000, 80520 , 80120 ); 
 
 
 
@@ -920,3 +919,74 @@ INSERT INTO T8_INSURANCE_POLICY_COVERAGE VALUES
     ( '80420','80220', '80120',81920,"Birla Sun Vehicle Insurance Company Limited");
 
 
+
+-- query 1
+    select * 
+    from  T8_VEHICLE v inner join T8_CUSTOMER c on v.Cust_id=c.Cust_id  
+    where c.Cust_id in ( 
+		select c1.Cust_id 
+        from T8_CUSTOMER c1, T8_CLAIM x, T8_INCIDENT_REPORT i 
+        where i.Cust_id = c1.Cust_id and c1.Cust_id = x.Cust_id and x.Claim_Status = 'Pending');
+        
+        
+        
+-- query 2
+    select * 
+    from T8_CUSTOMER c1 
+    where c1.Cust_id in 
+    (select c.Cust_id from T8_CUSTOMER c, T8_PREMIUM_PAYMENT p 
+    where (p.Cust_id = c.Cust_id and p.Premium_Payment_Amount > (select sum(CAST(Cust_id as unsigned)) from T8_CUSTOMER)));
+    
+    
+    
+    
+    -- query 3
+    select * 
+    from T8_INSURANCE_COMPANY 
+    where Company_Name in 
+    (select T8_OFFICE.Company_Name 
+    from T8_OFFICE
+    group by Company_Name 
+    having count(distinct (Address))>1 and Company_Name in 
+    (select T8_DEPARTMENT.Company_Name
+    from T8_PRODUCT inner join T8_DEPARTMENT 
+    on T8_DEPARTMENT.Company_Name = T8_PRODUCT.Company_Name 
+    group by T8_DEPARTMENT.Company_Name 
+    having count(distinct (Product_Number)) > count(distinct (Department_Name))));
+    
+    
+    -- select T8_DEPARTMENT.Company_Name, count(*)
+--     from T8_PRODUCT inner join T8_DEPARTMENT 
+--     on T8_DEPARTMENT.Company_Name = T8_PRODUCT.Company_Name 
+--     group by T8_DEPARTMENT.Company_Name;
+    
+    
+    -- query 4
+    select * 
+    from T8_CUSTOMER 
+    where Cust_id in (select Cust_id from T8_INCIDENT_REPORT where Cust_id in (select Cust_id from T8_VEHICLE group by Cust_id having count(Cust_id) > 1) 
+    and Cust_id not in (select Cust_id from T8_PREMIUM_PAYMENT));
+    
+    
+    
+    
+    -- query 5
+    select *
+    from T8_VEHICLE as v, T8_PREMIUM_PAYMENT as p where v.Cust_id = p.Cust_id and p.Premium_Payment_Amount > v.Vehicle_Number;
+
+
+
+
+-- query 6
+    select * 
+    from T8_CUSTOMER
+    where Cust_id 
+    in (select distinct (cl.Cust_id)
+		from T8_CLAIM as cl, T8_CLAIM_SETTLEMENT as cs, T8_COVERAGE as co where cl.Claim_Amount > cs.Claim_Settlement_id + cs.Vehicle_id + cl.Claim_id + cl.Cust_id and cl.Claim_Amount < Coverage_Amount );
+        
+        
+        
+        
+        
+        
+        
