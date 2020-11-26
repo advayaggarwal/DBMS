@@ -30,7 +30,7 @@ INSERT INTO T8_CUSTOMER VALUES
 (80106, 'Kshitiz', 'Micheal','1999-12-07 ','M','Madhya Pradesh',6654565855,'18bcs085@iiitdwd.ac.in ', 7745858364,'Divorced', 806),
 (80107, 'Akarsh', 'Maurya','1999-10-14' ,'M','Mumbai',8875651200,'18bcs084@iiitdwd.ac.in ', 7491111664,'Married', 807),
 (80108, 'Mithil', 'Anchan','1999-04-25' ,'M','Mumbai',5574856300,'18bcs072@iiitdwd.ac.in ', 7490000564,'Divorced', 808),
-(80109, 'Ritik', 'Prakash','1999-05-29 ','M','Banglore ',9985100345,'ritikprakash@gmail.com ', 7787878664,'Married', 809),
+(80109, 'Udit', 'Pal','1999-05-29 ','M','Banglore ',9985100345,'18bcs107@iiitdwd.ac.in ', 7787878664,'Married', 809),
 (80110, 'Amit', 'Shah','1998-09-16' ,'M','Banglore ',9857565810,'amitshah@gmail.com ', 4548200364,'Divorced', 810),
 (80111, 'Rahul', 'Gandhi','1999-07-25' ,'M','Hyderabad ',8875469568,'rahulgandhi@gmail.com ', 6696333064,'Single', 811),
 (80112, 'Kapil', 'Dev','1997-10-23' ,'M','Kolkata ',6520012301,'kapildev@gmail.com ', 7776758364,'Divorced', 812),
@@ -252,9 +252,8 @@ CREATE UNIQUE INDEX XPKVEHICLE_6 ON T8_VEHICLE(Vehicle_Id ASC,Cust_Id ASC);
     ('80617', '20017','81417', 'MH 34 GH 6666', 800000, '4 wheeler', 12.4, 4, 'Volkswagon', 51717, 52717, 279101, 'FZS-000100', '80117'),
     ('80618', '20018','81418', 'HP 14 HI 7777', 900000, '4 wheeler', 15.4, 4, 'Skoda', 51718, 52718, 191877, 'FZS-430100', '80118'),
     ('80619', '20019','81419', 'DL 34 JK 8888', 650000, '4 wheeler', 12.4, 4, 'Maruti', 51718, 52719, 998741, 'FZS-5433100', '80119'),
-    ('80620', '20020','81420', 'MH 12 LM 9999', 1200000, '4 wheeler', 19.4, 6, 'BMW', 51720, 52720, 485631, 'FZS-940100', '80120');
-
-INSERT INTO T8_VEHICLE VALUES ('80621', '20020','81420', 'MH 35 KP 0020', 25000, '4 wheeler', 25.4, 8, 'AUDI', 51711, 52711, 881101, 'FZS-343100', '80120');
+    ('80620', '20020','81420', 'MH 12 LM 9999', 1200000, '4 wheeler', 19.4, 6, 'BMW', 51720, 52720, 485631, 'FZS-940100', '80120'),
+	('80621', '20020','81420', 'MH 35 KP 0020', 25000, '4 wheeler', 25.4, 8, 'AUDI', 51711, 52711, 881101, 'FZS-343100', '80120');
 -- select * from T8_VEHICLE;
 
 
@@ -283,7 +282,7 @@ INSERT INTO T8_CLAIM VALUES
     ('80701','80401' ,'400000','81701' ,'Self-ignition','2021-03-03','Approved','80101'),
     ('80702','80402' ,'500000','81702' ,'Aggravated damage','2021-02-04','Rejected','80102'),
     ('80703', '80403','350000','81703' ,'Collision Coverage','2021-07-29','Approved','80103'),
-    ('80704', '80404','150000','81704' ,'Drunken Driving','2021-02-23','pending','80104'),
+    ('80704', '80404','150000','81704' ,'Drunken Driving','2021-02-23','Pending','80104'),
     ('80705', '80405','250000', '81705','External Explosion','2021-03-06','Approved','80105'),
     ('80706', '80406','270000','81706' ,'Natural Calamity','2021-08-23','Pending','80106'),
     ('80707', '80407','250000','81707' ,'Fire','2021-12-19','Rejected','80107'),
@@ -334,8 +333,6 @@ INSERT INTO T8_CLAIM_SETTLEMENT VALUES
 
 
 
-
-
 -- drop table T8_INSURANCE_COMPANY;
 -- table 15
 CREATE TABLE IF NOT EXISTS T8_INSURANCE_COMPANY
@@ -374,8 +371,10 @@ INSERT INTO T8_INSURANCE_COMPANY VALUES
 ('Shriram Vehicle Insurance Company Limited','Bank Training Centre, Financial District, Gachibowli, Hyderabad, TG, India – 500032.',7785468265,8875965240,'ShriramVehicle@help.com', 'ShriramVehicle.com','Hyderabad', 'ShriramVehicleoffice','ShriramVehicleoffice'),
 ('Tata AIA Vehicle Insurance Company Limited','Floor, Tower A, Peninsula Business Park, Senapati Bapat Marg, Lower Parel, Mumbai 400013',2325364645,8379847393,'tataaia@help.com','tataVehicle.com','Mumbai','tataVehicleoffice','tataVehicleoffice'),
 ('Vehicle Insurance Corporation of India','2nd Floor Jagtial 505327',9769915552,5033256779,'lic@gmail.com','www.lic.com','jagtial','licjagtial','licjag');
-
 -- select * from T8_INSURANCE_COMPANY;
+
+
+
 
 
 
@@ -637,7 +636,6 @@ INSERT INTO T8_NOK VALUES
 
 
 
-
 -- drop table T8_POLICY_RENEWABLE;
 -- table 16
 CREATE TABLE IF NOT EXISTS T8_POLICY_RENEWABLE
@@ -878,6 +876,7 @@ INSERT INTO T8_RECEIPT VALUES
 
 
 
+
 -- drop table T8_INSURANCE_POLICY_COVERAGE;
 -- table 22
 CREATE TABLE IF NOT EXISTS T8_INSURANCE_POLICY_COVERAGE
@@ -917,70 +916,5 @@ INSERT INTO T8_INSURANCE_POLICY_COVERAGE VALUES
 
 
 
--- query 1
-    select * 
-    from  T8_VEHICLE v inner join T8_CUSTOMER c on v.Cust_id=c.Cust_id  
-    where c.Cust_id in ( 
-		select c1.Cust_id 
-        from T8_CUSTOMER c1, T8_CLAIM x, T8_INCIDENT_REPORT i 
-        where i.Cust_id = c1.Cust_id and c1.Cust_id = x.Cust_id and x.Claim_Status = 'Pending');
-        
-        
-        
--- query 2
-    select * 
-    from T8_CUSTOMER c1 
-    where c1.Cust_id in 
-    (select c.Cust_id from T8_CUSTOMER c, T8_PREMIUM_PAYMENT p 
-    where (p.Cust_id = c.Cust_id and p.Premium_Payment_Amount > (select sum(CAST(Cust_id as unsigned)) from T8_CUSTOMER)));
-    
-    
-    
-    
-    -- query 3
-    select * 
-    from T8_INSURANCE_COMPANY 
-    where Company_Name in 
-    (select T8_OFFICE.Company_Name 
-    from T8_OFFICE
-    group by Company_Name 
-    having count(distinct (Address))>1 and Company_Name in 
-    (select T8_DEPARTMENT.Company_Name
-    from T8_PRODUCT inner join T8_DEPARTMENT 
-    on T8_DEPARTMENT.Company_Name = T8_PRODUCT.Company_Name 
-    group by T8_DEPARTMENT.Company_Name 
-    having count(distinct (Product_Number)) > count(distinct (Department_Name))));
-    
-    
-    
-    
-    
-    -- query 4
-    select * 
-    from T8_CUSTOMER 
-    where Cust_id in (select Cust_id from T8_INCIDENT_REPORT where Cust_id in (select Cust_id from T8_VEHICLE group by Cust_id having count(Cust_id) > 1) 
-    and Cust_id not in (select Cust_id from T8_PREMIUM_PAYMENT));
-    
-    
-    
-    
-    -- query 5
-    select *
-    from T8_VEHICLE as v, T8_PREMIUM_PAYMENT as p where v.Cust_id = p.Cust_id and p.Premium_Payment_Amount > v.Vehicle_Number;
 
-
-
-
--- query 6
-    select * 
-    from T8_CUSTOMER
-    where Cust_id 
-    in (select distinct (cl.Cust_id)
-		from T8_CLAIM as cl, T8_CLAIM_SETTLEMENT as cs, T8_COVERAGE as co where cl.Claim_Amount > cs.Claim_Settlement_id + cs.Vehicle_id + cl.Claim_id + cl.Cust_id and cl.Claim_Amount < Coverage_Amount );
-        
-        
-        
-        
-        
-        
         
