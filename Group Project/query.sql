@@ -1,6 +1,6 @@
 
 -- query 1
-select * 
+select *
     from  T8_VEHICLE v inner join T8_CUSTOMER c on v.Cust_id=c.Cust_id  
     where c.Cust_id in ( 
 		select x.Cust_id 
@@ -55,7 +55,7 @@ select *
     
     
 -- query 6
-select Cust_Id, Cust_FName, Cust_LName, Cust_DOB, Cust_Gender, Cust_Address, Cust_MOB_Number, Cust_Email, Cust_Passport_Number, Cust_Marital_Status, Cust_PPS_Number
+select *
     from T8_CUSTOMER
     where Cust_id in (
 		select distinct (cl.Cust_id)
