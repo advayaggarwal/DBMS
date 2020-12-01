@@ -10,11 +10,13 @@
             from T8_VEHICLE 
             group by Cust_id 
             having count(Cust_id) > 1) and Cust_id not in (select Cust_id from T8_PREMIUM_PAYMENT));
+            
+
 
 
 -- view query 6
 create view query_6 as
-    select *
+    select Cust_Id, Cust_FName, Cust_LName, Cust_DOB, Cust_Gender, Cust_Address, Cust_MOB_Number, Cust_Email, Cust_Passport_Number, Cust_Marital_Status, Cust_PPS_Number
     from T8_CUSTOMER
     where Cust_id in (
 		select distinct (cl.Cust_id)

@@ -42,6 +42,7 @@ DELIMITER ;
 
 
 
+
 -- query 3
 
 DELIMITER //
